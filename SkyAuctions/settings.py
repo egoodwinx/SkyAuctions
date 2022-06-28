@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 from pickle import FALSE
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,10 +22,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-#wum0!3!0s%8pb$dfpbhx3w0ccyabca7#28*0v_s$+8s1sh8x6'
+SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ['DEBUG']
 
 ALLOWED_HOSTS = []
 
@@ -78,15 +79,7 @@ WSGI_APPLICATION = 'SkyAuctions.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'NAME':'SkyAuctionsDB',
-        'ENGINE':'mssql',
-        'HOST':'EMILY-PC',
-        'USER':'sa',
-        'PASSWORD':'sa'
-    }
-}
+DATABASES = os.environ['DATABASES']
 
 
 # Password validation
@@ -139,10 +132,4 @@ REST_FRAMEWORK = {
 
 CORS_ORIGIN_ALLOW_ALL = False
 
-CORS_ALLOWED_ORIGINS = [
-    'http://localhost:3000',
-    'http://127.0.0.1:3000',
-    'null',
-    'https://skyauctionsapi.azurewebsites.net',
-    'https://thankful-sky-077a9820f.1.azurestaticapps.net'
-]
+CORS_ALLOWED_ORIGINS = os.environ['ALLOWED_HOSTS']
