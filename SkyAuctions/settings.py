@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'SkyAuctions.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = os.environ['DATABASES']
+DATABASES = eval(os.environ['DATABASES'])
 
 
 # Password validation
@@ -132,4 +132,4 @@ REST_FRAMEWORK = {
 
 CORS_ORIGIN_ALLOW_ALL = False
 
-CORS_ALLOWED_ORIGINS = os.environ['ALLOWED_HOSTS']
+CORS_ALLOWED_ORIGINS = eval(os.environ['ALLOWED_HOSTS'])
