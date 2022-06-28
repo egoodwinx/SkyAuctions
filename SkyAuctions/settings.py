@@ -142,5 +142,7 @@ CORS_ORIGIN_ALLOW_ALL = False
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
     'http://127.0.0.1:3000',
-    'null'
+    'null',
+    'https://skyauctionsapi.azurewebsites.net',
+    'https://thankful-sky-077a9820f.1.azurestaticapps.net'
 ]
