@@ -10,7 +10,7 @@ class AllAuctionModel {
       }
 
     loadAuctions(page=1, bin="", tier="", type="", itemName=""){
-        var connectString = "http://127.0.0.1:8000/api/auction/?page="+page;
+        var connectString = "https://skyauctionsapi.azurewebsites.net/api/auction/?page="+page;
         if (bin === ""){
             bin = "Any";
         } else if (bin === "Yes"){
