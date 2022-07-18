@@ -21,8 +21,16 @@ class StatisticsModel {
         .then(response => response.json())
         .then(function(data){ 
             data = JSON.parse(data);
-            if (data.length > 0){
+            if (data === null){
+                data = [0,0,0,0,0,0,0]
+            }
+            else if (data.length > 0){
                 data = data[0]
+                for (var i = 0; i < data.length; i++){
+                    if (data[i] === null){
+                        data[i] = 0;
+                    }
+                }
             }
             this.dailyAvgData = data;
         }.bind(this))
@@ -36,8 +44,16 @@ class StatisticsModel {
         .then(response => response.json())
         .then(function(data){ 
             data = JSON.parse(data);
-            if (data.length > 0){
-                data = data[0]
+            if (data === null){
+                data = [0,0,0,0,0,0,0]
+            }
+            else if (data.length > 0){
+                data = data[0];
+                for (var i = 0; i < data.length; i++){
+                    if (data[i] === null){
+                        data[i] = 0;
+                    }
+                }
             }
             this.dailyMinData = data;
         }.bind(this))
@@ -51,8 +67,16 @@ class StatisticsModel {
         .then(response => response.json())
         .then(function(data){ 
             data = JSON.parse(data);
-            if (data.length > 0){
+            if (data === null){
+                data = [0,0,0,0,0,0,0]
+            }
+            else if (data.length > 0){
                 data = data[0]
+                for (var i = 0; i < data.length; i++){
+                    if (data[i] === null){
+                        data[i] = 0;
+                    }
+                }
             }
             this.dailyMaxData = data;
         }.bind(this))
@@ -66,6 +90,9 @@ class StatisticsModel {
         .then(response => response.json())
         .then(function(data){ 
             data = JSON.parse(data);
+            if (data === null){
+                data = []
+            }
             this.hourlyAvgData = [];
             var arrayPos = 0;
             for (var i = 0; i < 24; i++){ // 24 hours
@@ -93,6 +120,9 @@ class StatisticsModel {
         .then(response => response.json())
         .then(function(data){ 
             data = JSON.parse(data);
+            if (data === "null"){
+                data = []
+            }
             this.hourlyMinData = [];
             var arrayPos = 0;
             for (var i = 0; i < 24; i++){ // 24 hours
@@ -120,6 +150,9 @@ class StatisticsModel {
         .then(response => response.json())
         .then(function(data){ 
             data = JSON.parse(data);
+            if (data === "null"){
+                data = []
+            }
             this.hourlyMaxData = [];
             var arrayPos = 0;
             for (var i = 0; i < 24; i++){ // 24 hours
@@ -297,7 +330,8 @@ class StatisticsModel {
     }
 
     onStatisticsUpdate = () =>{
-        this.view.displayStatistics(dailyMaxes, dailyMins, dailyAvgs, hourlyMaxes, hourlyMins, hourlyAvgs, itemsQueried);
+        this.view.displayStatistics(this.model.dailyMaxData, this.model.dailyMinData, this.model.dailyAvgData,
+            this.model.hourlyMaxData, this.model.hourlyMinData, this.model.hourlyAvgData, this.model.itemsIncluded);
     }
 
     async handleSearchClicked (itemName) {
