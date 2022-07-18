@@ -1,4 +1,4 @@
-//https://www.taniarascia.com/javascript-mvc-todo-app/ as base
+//http://www.taniarascia.com/javascript-mvc-todo-app/ as base
 class StatisticsModel {
     constructor() {
         this.hourlyMaxData = [];
@@ -15,7 +15,7 @@ class StatisticsModel {
     }
 
     GetDailyItemAverages(itemQuery){
-        var connectString = "https://skyauctionsapi.azurewebsites.net/api/GetDailyItemAverages?itemName="+itemQuery;
+        var connectString = "http://skyauctionsapi.azurewebsites.net/api/GetDailyItemAverages?itemName="+itemQuery;
         
         return fetch(connectString)
         .then(response => response.json())
@@ -30,7 +30,7 @@ class StatisticsModel {
     }
 
     GetDailyItemMins(itemQuery){
-        var connectString = "https://skyauctionsapi.azurewebsites.net/api/GetDailyItemMins?itemName="+itemQuery;
+        var connectString = "http://skyauctionsapi.azurewebsites.net/api/GetDailyItemMins?itemName="+itemQuery;
         
         return fetch(connectString)
         .then(response => response.json())
@@ -45,7 +45,7 @@ class StatisticsModel {
     }
 
     GetDailyItemMaxes(itemQuery){
-        var connectString = "https://skyauctionsapi.azurewebsites.net/api/GetDailyItemMaxes?itemName="+itemQuery;
+        var connectString = "http://skyauctionsapi.azurewebsites.net/api/GetDailyItemMaxes?itemName="+itemQuery;
         
         return fetch(connectString)
         .then(response => response.json())
@@ -60,7 +60,7 @@ class StatisticsModel {
     }
 
     GetHourlyItemAverages(itemQuery){
-        var connectString = "https://skyauctionsapi.azurewebsites.net/api/GetHourlyItemAverages?itemName="+itemQuery;
+        var connectString = "http://skyauctionsapi.azurewebsites.net/api/GetHourlyItemAverages?itemName="+itemQuery;
         
         return fetch(connectString)
         .then(response => response.json())
@@ -87,7 +87,7 @@ class StatisticsModel {
     }
 
     GetHourlyItemMins(itemQuery){
-        var connectString = "https://skyauctionsapi.azurewebsites.net/api/GetHourlyItemMins?itemName="+itemQuery;
+        var connectString = "http://skyauctionsapi.azurewebsites.net/api/GetHourlyItemMins?itemName="+itemQuery;
         
         return fetch(connectString)
         .then(response => response.json())
@@ -114,7 +114,7 @@ class StatisticsModel {
     }
 
     GetHourlyItemMaxes(itemQuery){
-        var connectString = "https://skyauctionsapi.azurewebsites.net/api/GetHourlyItemMaxes?itemName="+itemQuery;
+        var connectString = "http://skyauctionsapi.azurewebsites.net/api/GetHourlyItemMaxes?itemName="+itemQuery;
         
         return fetch(connectString)
         .then(response => response.json())
@@ -141,7 +141,7 @@ class StatisticsModel {
     }
 
     GetItemNameResults(itemQuery){
-        var connectString = "https://skyauctionsapi.azurewebsites.net/api/GetItemNameResults?itemName="+itemQuery;
+        var connectString = "http://skyauctionsapi.azurewebsites.net/api/GetItemNameResults?itemName="+itemQuery;
         return fetch(connectString)
         .then(response => response.json())
         .then(function(data){ 
