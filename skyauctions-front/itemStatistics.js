@@ -120,7 +120,7 @@ class StatisticsModel {
         .then(response => response.json())
         .then(function(data){ 
             data = JSON.parse(data);
-            if (data === "null"){
+            if (data === null){
                 data = []
             }
             this.hourlyMinData = [];
@@ -150,7 +150,7 @@ class StatisticsModel {
         .then(response => response.json())
         .then(function(data){ 
             data = JSON.parse(data);
-            if (data === "null"){
+            if (data === null){
                 data = []
             }
             this.hourlyMaxData = [];
