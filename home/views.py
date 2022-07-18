@@ -17,7 +17,9 @@ class GetDailyAveragesView(APIView):
 
         itemName = request.GET.get("itemName", None)
         if itemName:
-            result = [tuple(row) for row in SkyAuctionsDB.AvgBINPriceByDay(itemName)]
+            result = SkyAuctionsDB.AvgBINPriceByDay(itemName)
+            if result != None:
+                result = [tuple(row) for row in result]
             json_results = json.dumps(result)
         else:
             json_results = ""
@@ -30,7 +32,9 @@ class GetDailyMinView(APIView):
 
         itemName = request.GET.get("itemName", None)
         if itemName:
-            result = [tuple(row) for row in SkyAuctionsDB.MinBINPriceByDay(itemName)]
+            result = SkyAuctionsDB.MinBINPriceByDay(itemName)
+            if result != None:
+                result = [tuple(row) for row in result]
             json_results = json.dumps(result)
         else:
             json_results = ""
@@ -43,7 +47,9 @@ class GetDailyMaxView(APIView):
 
         itemName = request.GET.get("itemName", None)
         if itemName:
-            result = [tuple(row) for row in SkyAuctionsDB.MaxBINPriceByDay(itemName)]
+            result = SkyAuctionsDB.MaxBINPriceByDay(itemName)
+            if result != None:
+                result = [tuple(row) for row in result]
             json_results = json.dumps(result)
         else:
             json_results = ""
@@ -56,7 +62,9 @@ class GetHourlyMaxView(APIView):
 
         itemName = request.GET.get("itemName", None)
         if itemName:
-            result = [tuple(row) for row in SkyAuctionsDB.MaxBINPriceByHour(itemName)]
+            result = SkyAuctionsDB.MaxBINPriceByHour(itemName)
+            if result != None:
+                result = [tuple(row) for row in result]            
             json_results = json.dumps(result)
         else:
             json_results = ""
@@ -69,7 +77,9 @@ class GetHourlyMinView(APIView):
 
         itemName = request.GET.get("itemName", None)
         if itemName:
-            result = [tuple(row) for row in SkyAuctionsDB.MinBINPriceByHour(itemName)]
+            result = SkyAuctionsDB.MinBINPriceByHour(itemName)
+            if result != None:
+                result = [tuple(row) for row in result]
             json_results = json.dumps(result)
         else:
             json_results = ""
@@ -82,7 +92,9 @@ class GetHourlyAverageView(APIView):
 
         itemName = request.GET.get("itemName", None)
         if itemName:
-            result = [tuple(row) for row in SkyAuctionsDB.AvgBINPriceByHour(itemName)]
+            result = SkyAuctionsDB.AvgBINPriceByHour(itemName)
+            if result != None:
+                result = [tuple(row) for row in result]
             json_results = json.dumps(result)
         else:
             json_results = ""
@@ -95,7 +107,9 @@ class GetItemNameResults(APIView):
 
         itemName = request.GET.get("itemName", None)
         if itemName:
-            result = [tuple(row) for row in SkyAuctionsDB.SelectItemNameQuery(itemName)]
+            result = SkyAuctionsDB.SelectItemNameQuery(itemName)
+            if result != None:
+                result = [tuple(row) for row in result]
             json_results = json.dumps(result)
         else:
             json_results = ""
