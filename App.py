@@ -15,7 +15,7 @@ class App():
     _instance = None
     GENERIC_TYPE = SingletonFileLogger.GENERIC_TYPE
     def setup(self):
-        if exists("config.cfg"):
+        if exists("config_local.cfg"):
             config = configparser.ConfigParser()
             config.read("config.cfg")
 
