@@ -109,6 +109,8 @@ User Environment Variables for Azure Cloud/Local
 ]
 ```
 
-Use ```python hypixe.py``` to start database updater
+Use ```python hypixel.py``` to start database updater
+
 Use ```python manage.py runserver``` to start django instance
+
 Then host static website via IIS or via cloud services.
