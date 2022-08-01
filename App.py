@@ -17,7 +17,7 @@ class App():
     def setup(self):
         if exists("config_local.cfg"):
             config = configparser.ConfigParser()
-            config.read("config.cfg")
+            config.read("config_local.cfg")
 
             self.__logger = None
             self.__logTypes = []

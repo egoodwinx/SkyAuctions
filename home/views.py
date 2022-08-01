@@ -16,14 +16,7 @@ class GetDailyAveragesView(APIView):
         result = None
 
         itemName = request.GET.get("itemName", None)
-        if itemName:
-            result = SkyAuctionsDB.AvgBINPriceByDay(itemName)
-            if result != None:
-                result = [tuple(row) for row in result]
-            json_results = json.dumps(result)
-        else:
-            json_results = ""
-        response = Response(json_results, status=status.HTTP_200_OK)
+        response = ExecuteDatabaseCall(itemName, SkyAuctionsDB.AvgBINPriceByDay)
         return response
 
 class GetDailyMinView(APIView):
@@ -31,14 +24,7 @@ class GetDailyMinView(APIView):
         result = None
 
         itemName = request.GET.get("itemName", None)
-        if itemName:
-            result = SkyAuctionsDB.MinBINPriceByDay(itemName)
-            if result != None:
-                result = [tuple(row) for row in result]
-            json_results = json.dumps(result)
-        else:
-            json_results = ""
-        response = Response(json_results, status=status.HTTP_200_OK)
+        response = ExecuteDatabaseCall(itemName, SkyAuctionsDB.MinBINPriceByDay)
         return response
 
 class GetDailyMaxView(APIView):
@@ -46,72 +32,43 @@ class GetDailyMaxView(APIView):
         result = None
 
         itemName = request.GET.get("itemName", None)
-        if itemName:
-            result = SkyAuctionsDB.MaxBINPriceByDay(itemName)
-            if result != None:
-                result = [tuple(row) for row in result]
-            json_results = json.dumps(result)
-        else:
-            json_results = ""
-        response = Response(json_results, status=status.HTTP_200_OK)
+        response = ExecuteDatabaseCall(itemName, SkyAuctionsDB.MaxBINPriceByDay)
         return response
+
 
 class GetHourlyMaxView(APIView):
     def get(self, request, *args, **kw):
-        result = None
-
         itemName = request.GET.get("itemName", None)
-        if itemName:
-            result = SkyAuctionsDB.MaxBINPriceByHour(itemName)
-            if result != None:
-                result = [tuple(row) for row in result]            
-            json_results = json.dumps(result)
-        else:
-            json_results = ""
-        response = Response(json_results, status=status.HTTP_200_OK)
+        response = ExecuteDatabaseCall(itemName, SkyAuctionsDB.MaxBINPriceByHour)
         return response
 
 class GetHourlyMinView(APIView):
     def get(self, request, *args, **kw):
-        result = None
-
         itemName = request.GET.get("itemName", None)
-        if itemName:
-            result = SkyAuctionsDB.MinBINPriceByHour(itemName)
-            if result != None:
-                result = [tuple(row) for row in result]
-            json_results = json.dumps(result)
-        else:
-            json_results = ""
-        response = Response(json_results, status=status.HTTP_200_OK)
+        response = ExecuteDatabaseCall(itemName, SkyAuctionsDB.MinBINPriceByHour)
         return response
 
 class GetHourlyAverageView(APIView):
     def get(self, request, *args, **kw):
-        result = None
-
         itemName = request.GET.get("itemName", None)
-        if itemName:
-            result = SkyAuctionsDB.AvgBINPriceByHour(itemName)
-            if result != None:
-                result = [tuple(row) for row in result]
-            json_results = json.dumps(result)
-        else:
-            json_results = ""
-        response = Response(json_results, status=status.HTTP_200_OK)
+        response = ExecuteDatabaseCall(itemName, SkyAuctionsDB.AvgBINPriceByHour)
         return response
 
 class GetItemNameResults(APIView):
     def get(self, request, *args, **kw):
-        result = None
-
         itemName = request.GET.get("itemName", None)
-        if itemName:
-            result = SkyAuctionsDB.SelectItemNameQuery(itemName)
-            if result != None:
-                result = [tuple(row) for row in result]
-            json_results = json.dumps(result)
-        else:
-            json_results = ""
-        response = Response(json_results, status=status.HTTP_200_OK)
+        response = ExecuteDatabaseCall(itemName, SkyAuctionsDB.SelectItemNameQuery)
         return response
+
+
+def ExecuteDatabaseCall(itemName, dbCall):
+    result = None
+    if itemName:
+        result = dbCall(itemName)
+        if result != None:
+            result = [tuple(row) for row in result]
+        json_results = json.dumps(result)
+    else:
+        json_results = ""
+    response = Response(json_results, status=status.HTTP_200_OK)
+    return response
